@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sotka™ | Premium Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0b0b12;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 70px 20px 40px 20px;
+            width: 100%;
+            background: radial-gradient(circle at top, rgba(255, 0, 127, 0.15) 0%, transparent 60%);
+        }
+
+        header h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 10px #ff007f, 0 0 30px #ff007f, 0 0 60px #ff007f;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Стильный блок вместо галереи работ */
+        .telegram-portfolio-box {
+            width: 100%;
+            max-width: 850px;
+            margin: 40px 20px;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(20, 20, 35, 0.8), rgba(28, 28, 49, 0.8));
+            border: 2px dashed #00ffff;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .telegram-portfolio-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .telegram-portfolio-box h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        .telegram-portfolio-box .tg-link {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: color 0.2s;
+        }
+
+        .telegram-portfolio-box .tg-link:hover {
+            color: #ff007f;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+        }
+
+        /* Секция Прайса и Скидок */
+        h2.section-title {
+            font-size: 2.2rem;
+            margin: 40px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(112, 0, 255, 0.6);
+            text-align: center;
+        }
+
+        .discount-badge {
+            background: linear-gradient(90deg, #ff007f, #7000ff);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 800;
+            padding: 8px 25px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 35px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 20px;
+            margin-bottom: 50px;
+        }
+
+        .price-card {
+            background: linear-gradient(145deg, #131322, #18182c);
+            border: 1px solid #2b2b4d;
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            border-color: #ff007f;
+            transform: translateY(-5px);
+        }
+
+        .price-card h4 {
+            font-size: 1.6rem;
+            color: #00ffff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .price-card .old-price-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .price-card .old-cost {
+            font-size: 1.2rem;
+            color: #575775;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .price-card .percent-off {
+            background: #ff007f;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .price-card .cost {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .price-card p {
+            color: #8b8baf;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .reviews-container {
+            width: 100%;
+            max-width: 850px;
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+
+        .review-box {
+            background: #141423;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 5px solid #ff007f;
+        }
+
+        .review-item {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #202036;
+        }
+
+        .review-item:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .review-text {
+            color: #d1d1e9;
+            font-style: italic;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        .review-user {
+            color: #00ffff;
+            font-weight: bold;
+        }
+
+        .btn-order {
+            display: inline-block;
+            margin: 40px 0 80px 0;
+            padding: 18px 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            background: transparent;
+            border: 3px solid #ff007f;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+            transition: all 0.25s ease;
+            text-shadow: 0 0 8px #fff;
+        }
+
+        .btn-order:hover {
+            background: #ff007f;
+            box-shadow: 0 0 40px #ff007f;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #161626;
+            background: #08080f;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #4e4e6a;
+        }
+
+        footer .support-phone {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #00ffff;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sotka™</h1>
+        <p>УНИВЕРСАЛЬНЫЙ ДИЗАЙН ДЛЯ ЛЮБЫХ ПРОЕКТОВ</p>
+    </header>
+
+    <!-- Блок со ссылкой на портфолио вместо картинок -->
+    <div class="telegram-portfolio-box">
+        <h2>🔥 Все мои кейсы и портфолио в Telegram: <a href="https://t.me/A_Jafar_313" target="_blank" class="tg-link">@A_Jafar_313</a></h2>
+    </div>
+
+    <h2 class="section-title">Прайс-лист</h2>
+    <div class="discount-badge">🎁 Мега-скидки до 70% на этой неделе!</div>
+
+    <div class="price-grid">
+        <!-- Карточка Аватарки -->
+        <div class="price-card">
+            <h4>Аватарка / Лого</h4>
+            <div class="old-price-row">
+                <div class="old-cost">349 ₽</div>
+                <div class="percent-off">-71%</div>
+            </div>
+            <div class="cost">от 100 ₽</div>
+            <p>Эксклюзивный стиль, HD качество, проработка идеи с нуля под любые задачи.</p>
+        </div>
+        <!-- Карточка Превью -->
+        <div class="price-card">
+            <h4>Превью / Обложка</h4>
+            <div class="old-price-row">
+                <div class="old-cost">500 ₽</div>
+                <div class="percent-off">-60%</div>
+            </div>
+            <div class="cost">от 200 ₽</div>
+            <p>Высокий CTR, правильные и сочные акценты, цепляющий и кликабельный дизайн.</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Отзывы клиентов</h2>
+    <div class="reviews-container">
+        <div class="review-box">
+            <div class="review-item">
+                <p class="review-text">"Сделал работу просто пушечную! Всё выглядит максимально сочно и профессионально. Стиль топ!"</p>
+                <div class="review-user">— @client_design</div>
+            </div>
+            <div class="review-item">
+                <p class="review-text">"Заказывал оформление, всё зашло на ура, просмотры и конверсия выросли. Буду заказывать ещё."</p>
+                <div class="review-user">— @tech_blogger</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" onclick="alert('Связь со мной в Telegram: @A_Jafar_313'); return false;" class="btn-order">Заказать дизайн</a>
+
+    <footer>
+        <p>© 2026 Sotka™. Все права защищены.</p>
+        <p style="margin-top: 5px; font-size: 0.8rem; color: #36364d;">Telegram: @A_Jafar_313</p>
+        <!-- Твой номер телефона службы поддержки -->
+        <p class="support-phone">📞 Номер поддержки: +7 (989) 450-13-30</p>
+    </footer>
+
+</body>
+</html>
